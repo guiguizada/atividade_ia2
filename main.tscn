@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
+
+[node name="main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="rum_slider" type="HSlider" parent="."]
+margin_left = 140.516
+margin_top = 105.508
+margin_right = 302.516
+margin_bottom = 121.508
+ticks_on_borders = false
+
+[node name="Label" type="Label" parent="rum_slider"]
+margin_left = 169.407
+margin_top = -10.1419
+margin_right = 209.407
+margin_bottom = 28.8581
+text = "0"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="rum_slider"]
+margin_left = 46.5705
+margin_top = -24.1426
+margin_right = 119.57
+margin_bottom = -10.1426
+text = "Rum"
+align = 1
+
+[node name="gelo_slider" type="HSlider" parent="."]
+margin_left = 144.021
+margin_top = 258.79
+margin_right = 306.021
+margin_bottom = 274.79
+ticks_on_borders = false
+
+[node name="Label" type="Label" parent="gelo_slider"]
+margin_left = 176.776
+margin_top = -11.3437
+margin_right = 216.776
+margin_bottom = 27.6563
+text = "0"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="gelo_slider"]
+margin_left = 64.3031
+margin_top = -24.8639
+margin_right = 104.303
+margin_bottom = -10.8639
+text = "gelo"
+align = 1
+
+[node name="refrigerante_slider" type="HSlider" parent="."]
+margin_left = 141.178
+margin_top = 411.837
+margin_right = 303.178
+margin_bottom = 427.837
+ticks_on_borders = false
+
+[node name="Label" type="Label" parent="refrigerante_slider"]
+margin_left = 172.565
+margin_top = -12.8977
+margin_right = 212.565
+margin_bottom = 26.1023
+text = "0"
+align = 1
+valign = 1
+
+[node name="OptionButton" type="OptionButton" parent="refrigerante_slider"]
+margin_left = 37.7099
+margin_top = -27.2853
+margin_right = 138.71
+margin_bottom = -7.28528
+toggle_mode = true
+align = 1
