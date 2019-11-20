@@ -1,10 +1,10 @@
 extends Control
 
 
-var refrigerante_tipo = 0
-var refrigerante_quantidade = 0
-var gelo_quantidade = 0
-var rum_quantidade = 0
+var refrigerante_tipo
+var refrigerante_quantidade
+var gelo_quantidade
+var rum_quantidade
 var refrigerante_forte
 var refrigerante_suave
 var refrigerante_fraco
@@ -12,6 +12,10 @@ var rum_forte
 var rum_suave
 var rum_fraco
 var gelo
+var drink_fraco
+var drink_suave
+var drink_forte
+var cuba_livre = false
 onready var option_button = get_node("refrigerante_slider/OptionButton")
 onready var rum_slider = get_node("rum_slider")
 onready var gelo_slider = get_node("gelo_slider")
@@ -28,6 +32,15 @@ func get_min(value1, value2, value3):
 	if value3<min_value:
 		min_value = value3
 	return(min_value)
+
+func get_max(value1, value2, value3):
+	var max_value
+	max_value = value1
+	if value2>max_value:
+		max_value = value2
+	if value3>max_value:
+		max_value = value3
+	return(max_value)
 
 func _ready():
 	#interface de usuario
@@ -145,3 +158,21 @@ func _process(delta):
 	#refrigerante
 	#calculo de grau de pertinencia
 	
+	#defuzzificacao
+	drink_fraco = get_max(get_min(refrigerante_fraco, rum_fraco, gelo),get_min(refrigerante_fraco, rum_suave, gelo), get_min(refrigerante_suave, rum_fraco, gelo))
+	drink_suave = get_max(get_min(refrigerante_forte, rum_fraco, gelo), get_min(refrigerante_suave, rum_suave, gelo), get_min(refrigerante_fraco, rum_forte, gelo))
+	drink_forte = get_max(get_min(refrigerante_forte, rum_suave, gelo), get_min(refrigerante_forte, rum_forte, gelo), get_min(refrigerante_suave, rum_forte, gelo))
+	$Label2.text = str(drink_fraco)+", "+str(drink_suave)+", "+str(drink_forte)
+	if(drink_fraco>=drink_forte and drink_fraco>=drink_suave):
+		$Label.text = "drink fraco"
+		cuba_livre = true
+	if(drink_suave>=drink_forte and drink_suave>=drink_fraco):
+		$Label.text = "drink suave"
+		cuba_livre = true
+	if(drink_forte>=drink_fraco and drink_forte>=drink_suave):
+		$Label.text = "drink forte"
+		cuba_livre = true
+	if(drink_forte<=0 and drink_suave<=0 and drink_fraco<=0):
+		$Label.text = "nao e cuba livre"
+		cuba_livre = false
+	#defuzzificacao
