@@ -1,6 +1,5 @@
 extends Control
 
-
 var refrigerante_tipo
 var refrigerante_quantidade
 var gelo_quantidade
@@ -89,7 +88,7 @@ func _process(delta):
 		rum_forte = 0
 	if rum_quantidade>=23 and rum_quantidade<=28:
 		rum_forte = (23-rum_quantidade)/(23-28)
-	if rum_quantidade>28 and rum_quantidade<30:
+	if rum_quantidade>28 and rum_quantidade<=30:
 		rum_forte = 1
 	if rum_quantidade>30:
 		rum_forte = 0
